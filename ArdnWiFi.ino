@@ -1,7 +1,4 @@
 #include <stdlib.h>
-#include <OneWire.h> 
-#define ONE_WIRE_BUS 8
-OneWire oneWire(ONE_WIRE_BUS);
 
 #define SSID "Name"
 #define PASS "Pass"
