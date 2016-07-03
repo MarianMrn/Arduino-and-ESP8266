@@ -21,7 +21,7 @@ void loop(){
   char buffer[10];
   String value = dtostrf(potentiometer, 4, 1, buffer);
   updateData(value);
-  delay(6000);
+  delay(4000);
 }
 
 void updateData(String value){
@@ -38,7 +38,7 @@ void updateData(String value){
   cmd += "\r\n";
   Serial.print("AT+CIPSEND=");
   Serial.println(cmd.length());
-    if(Serial.find(">")) {
+    if(Serial.find("OK")) {
         Serial.print(cmd);
   }
     else {
