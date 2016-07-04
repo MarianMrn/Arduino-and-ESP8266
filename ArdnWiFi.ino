@@ -15,13 +15,17 @@ void setup()
     connectWiFi();
   }
 }
-
+float val = 0;
 void loop(){
   float potentiometer = analogRead(A2);
+  float diff = abs (potentiometer - val)
   char buffer[10];
   String value = dtostrf(potentiometer, 4, 1, buffer);
-  updateData(value);
-  delay(4000);
+  
+  if (diff > 100 ) {
+     val = potentiometer;
+     updateTemp(value);
+  }   
 }
 
 void updateData(String value){
@@ -29,7 +33,6 @@ void updateData(String value){
   cmd += IP;
   cmd += "\",80";
   Serial.println(cmd);
-  delay(2000);
   if(Serial.find("Error")){
     return;
   }
